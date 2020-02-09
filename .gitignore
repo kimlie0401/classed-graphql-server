@@ -1,2 +1,4 @@
-node_modules
+#not upload these files
+
+node_modules 
 config.js
