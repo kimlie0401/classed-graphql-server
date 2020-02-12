@@ -24,6 +24,18 @@ module.exports = {
         await post.save();
         return post;
       } else throw new UserInputError("Post not found");
+    },
+    deleteComment: async (_, { postId, commentId }, context) => {
+      const { username } = checkAuth(context);
+
+      const post = await Post.findById(postId);
+
+      if (post) {
+        const commentIndex = post.comments.findIndex(c => c.id === commentId);
+
+        if (post.comments[commentIndex].username === username) {
+        }
+      }
     }
   }
 };
