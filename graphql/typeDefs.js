@@ -6,11 +6,13 @@ module.exports = gql`
     body: String!
     createdAt: String!
     username: String!
-    comments: [Commnet]!
+    comments: [Comment]!
     likes: [Like]!
+    likeCount: Int!
+    commentCount: Int!
   }
 
-  type Commnet {
+  type Comment {
     id: ID!
     createdAt: String!
     username: String!
@@ -51,5 +53,10 @@ module.exports = gql`
     createComment(postId: ID!, body: String!): Post!
     deleteComment(postId: ID!, commentId: ID!): Post!
     likePost(postId: ID!): Post!
+  }
+
+  type Subscription {
+    newPost: Post!
+    newComment: Post!
   }
 `;
